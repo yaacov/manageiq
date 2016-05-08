@@ -33,6 +33,11 @@ module ManageIQ::Providers
       aggregate_hardware(:computer_systems, :memory_mb, targets)
     end
 
+    class << model_name
+      define_method(:route_key) { "ems_containers" }
+      define_method(:singular_route_key) { "ems_container" }
+    end
+
     # enables overide of ChartsLayoutService#find_chart_path
     def chart_layout_path
       "ManageIQ_Providers_ContainerManager"
