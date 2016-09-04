@@ -732,6 +732,10 @@
       :description: Manage Policies of Infrastructure Providers
       :feature_type: control
       :identifier: ems_infra_protect
+    - :name: Validate
+      :description: Validate Infrastructure Providers
+      :feature_type: control
+      :identifier: ems_infra_validate
     - :name: Refresh
       :description: Refresh Infrastructure Providers
       :feature_type: control

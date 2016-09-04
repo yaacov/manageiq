@@ -677,6 +677,8 @@
         :identifier: ems_infra_new
       - :name: edit
         :identifier: ems_infra_edit
+      - :name: authenticate
+        :identifier: ems_infra_authenticate
       - :name: refresh
         :identifier: ems_infra_refresh
       - :name: delete
@@ -688,6 +690,8 @@
       :post:
       - :name: edit
         :identifier: ems_infra_edit
+      - :name: authenticate
+        :identifier: ems_infra_authenticate
       - :name: refresh
         :identifier: ems_infra_refresh
       - :name: delete
@@ -1785,4 +1789,3 @@
       :delete:
       - :name: edit
         :identifier: arbitration_rule_delete
-

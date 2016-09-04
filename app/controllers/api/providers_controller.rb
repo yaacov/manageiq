@@ -39,6 +39,17 @@ module Api
       end
     end
 
+    def authenticate_resource_providers(type, id = nil, _data = nil)
+      raise BadRequestError, "Must specify an id to Validate a #{type} resource" unless id
+
+      api_action(type, id) do |klass|
+        provider = resource_search(id, type, klass)
+        api_log_info("Validating #{provider_ident(provider)}")
+
+        authenticate_provider(provider)
+      end
+    end
+
     def delete_resource_providers(type, id = nil, _data = nil)
       raise BadRequestError, "Must specify an id for deleting a #{type} resource" unless id
 
@@ -93,6 +104,14 @@ module Api
     def refresh_provider(provider)
       desc = "#{provider_ident(provider)} refreshing"
       provider.refresh_ems
+      action_result(true, desc)
+    rescue => err
+      action_result(false, err.to_s)
+    end
+
+    def authenticate_provider(provider)
+      desc = "#{provider_ident(provider)} validating"
+      provider.authentication_check_types_queue(provider.default_authentication, :save => true)
       action_result(true, desc)
     rescue => err
       action_result(false, err.to_s)
